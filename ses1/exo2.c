@@ -3,8 +3,9 @@
 
 
 void printbits(unsigned char byte){
-    unsigned char one = 1 << 7;
-    for(int i=0;i<8;i++){
+    int bits = sizeof(unsigned char)*8;
+    unsigned char one = 1 << bits-1;
+    for(int i=0;i<bits;i++){
         if(one & byte) printf("1");
         else printf("0");
         one = one >> 1;
@@ -15,6 +16,7 @@ void printbits(unsigned char byte){
 
 int main(){
     unsigned char x;
+    printf("Enter a a positive integer to convert to 8-bit binary : ");
     scanf("%d",&x);
     printbits(x);
     return 0;
