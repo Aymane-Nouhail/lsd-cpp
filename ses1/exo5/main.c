@@ -1,4 +1,8 @@
-#include "exo5.h"
+#include<stdio.h>
+/* prototypes */
+void checkmsb(int);
+void printbits(unsigned char);
+void print_nth_byte(int, int);
 
 int main(){
     int y;
@@ -12,7 +16,7 @@ int main(){
     printbits(x);
     printf("\n");
     int n, m;
-    printf("enter the number : ");
+    printf("enter the number to find the nth byte : ");
     scanf("%d",&m);
     printf("enter which byte : ");
     scanf("%d",&n);
