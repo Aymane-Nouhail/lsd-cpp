@@ -1,0 +1,9 @@
+1. An integer is stored in 4 bytes, that is 32 bits.
+2. 4 bytes.
+3.  00000001 shifted to the right is 00000000, so it would print 0.
+	00000001 shifted to the left is 00000010, so it would print 2.
+	00000001 shifted to the left is 00000100, so it would print 4.
+	shifting to the left is the quasi-same as adding a 0 to the end, which means multiplying the number by the base, which is in this case 2 (for decimal adding a 0 at the end is multiplying by 10 for example).
+4. [0 ; (2^8)-1] = [0 ; 255]
+5. [ - ( (2^7)-1 ) ; 2^7-1 ] = [-127 ; 127 ]
+6. the left-most leading digit is reserved for signs. 
