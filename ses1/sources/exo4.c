@@ -22,14 +22,3 @@ void print_nth_byte(int n, int m){
     printbits(res);
 }
 
-
-int main(){
-    int n, m;
-    printf("enter the number : ");
-    scanf("%d",&m);
-    printf("enter which byte : ");
-    scanf("%d",&n);
-    printf("the byte number %d of %d is : ",n,m);
-    print_nth_byte(n, m);
-    return 0;
-}

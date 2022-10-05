@@ -9,10 +9,3 @@ void checkmsb (int num){
     return;
 }
 
-int main(){
-    int x;
-    printf("Enter a number to check the MSB : \n");
-    scanf("%d",&x);
-    checkmsb(x);
-    return 0;
-}

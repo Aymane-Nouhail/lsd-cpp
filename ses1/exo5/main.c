@@ -4,6 +4,8 @@ void checkmsb(int);
 void printbits(unsigned char);
 void print_nth_byte(int, int);
 
+//gcc main.c -L. lib_bitwise.a
+
 int main(){
     int y;
     printf("Enter a number to check the MSB : \n");

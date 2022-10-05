@@ -12,12 +12,3 @@ void printbits(unsigned char byte){
     }
     return;
 }
-
-
-int main(){
-    unsigned char x;
-    printf("Enter a a positive integer to convert to 8-bit binary : ");
-    scanf("%d",&x);
-    printbits(x);
-    return 0;
-}
