@@ -1,5 +1,4 @@
-#include "..\include\read_lines.h"
-//#include "../include/read_lines.h"     uncomment this line and comment upper line if on linux.
+#include "../include/read_lines.h"
 
 
 //in order to compile, cd into read_lines, then run the following command  : gcc src/* -o read_lines.exe -D BUFFER_SIZE=10
