@@ -1,5 +1,4 @@
-#include "..\include\read_lines.h"
-//#include "../include/read_lines.h"     uncomment this line and comment upper line if on linux.
+#include "../include/read_lines.h"
 
 unsigned longueurString(string L)
 {
