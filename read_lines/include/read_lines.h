@@ -29,5 +29,5 @@ void freeString(string*); //liberer un string
 int indexInString(char, string); //returns index of a character in the string, returns -1 if it's not there.
 
 //read_lines.c
-int openString(int, string*,int); //open but takes string instead of char* as second input
+int readString(int, string*,int); //read but takes string instead of char* as second input
 char* read_lines(int); 

@@ -7,11 +7,9 @@ int	main()
 {
 	int	fd;
 	char *buf;
-    string T = NULL;
 	fd = open("test", O_RDONLY);
-    buf = read_lines(fd);
-    printf("%s",buf);
-    while("The sky has not fallen"){
+    int n; printf("how many lines do you want to show? "); scanf("%d",&n);
+    for(int i=0;i<n;i++){
         buf = read_lines(fd);
         if(buf == NULL) break;
         printf("%s",buf);
