@@ -15,7 +15,7 @@ char* read_lines(int fd){
     if(index_newline == -1){ //particular case : we're in the last line.(if the document doesn't end in \n)
         index_newline = longueurString(queue)-1; //index_newline ought be changed from -1 to longueur. 
     } //we substracted one because index and size(longueur) are one-off each other.
-    res = (char*) malloc(index_newline +2); //the 2 extra mallocs are for : '\n' and '\0'
+    res = (char*) malloc(index_newline +2); //the 2 extra mallocs are for : one-off between index and size, and '\0'
     string temp = queue;
     for(int i=0;i<index_newline+1;i++){
         res[i] = temp->element; //copying everything before \n from queue into res
