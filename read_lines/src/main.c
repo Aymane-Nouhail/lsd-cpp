@@ -7,7 +7,7 @@ int	main()
 {
 	int	fd;
 	char *buf;
-	fd = open("test", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
     int n; 
     printf("how many lines do you want to show? "); scanf("%d",&n);
     for(int i=0;i<n;i++){
