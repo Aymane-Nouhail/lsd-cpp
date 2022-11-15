@@ -3,10 +3,11 @@
 char* read_lines(int fd){
     char* res = NULL;
     if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &res, 0) < 0)
-		return (NULL);
+		return NULL;
     static string queue = NULL;
     int check = openString(fd,&queue,BUFFER_SIZE); //reading into queue BUFFER_SIZE bites from fd
-    if(queue == NULL) return NULL;
+    if(queue == NULL) 
+        return NULL;
     //general case : 
     while(check == BUFFER_SIZE && indexInString('\n',queue) == -1){ //redoing open while encountering no newlines
         openString(fd,&queue,BUFFER_SIZE);
