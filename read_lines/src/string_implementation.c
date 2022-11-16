@@ -91,17 +91,17 @@ int indexInString(char x, string L)
     return (-1);
 }
 
-/*
-int main(){
+
+
+/*int main(){
     string T = NULL;
     ajoutFinString('w',&T);
     ajoutFinString('o',&T);
-    ajoutFinString('\n',&T);
+    ajoutFinString('o',&T);
     ajoutFinString('g',&T);
-    printf("%d",indexInString('x',T));
-    freeString(&T);
+    char test[5] = "hello";
     printString(T);
     return 0;
-}
-*/
+}*/
+
 

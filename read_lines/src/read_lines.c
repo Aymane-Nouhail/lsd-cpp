@@ -17,7 +17,6 @@ char* read_lines(int fd){
     } //we substracted one because index and size(longueur) are one-off each other.
     res = (char*) malloc(index_newline +2); //the 2 extra mallocs are for : one-off between index and size, and '\0'
     string temp = queue; //we use temp to not alter queue.
-    //printf("\nqueue = ");printString(queue); printf("\t index = %d\n",index_newline);
     for(int i=0;i<index_newline+1;i++){
         res[i] = temp->element; //copying everything before \n from queue into res
         temp = temp->suivant; //advancing the singly linked list by one
@@ -27,14 +26,11 @@ char* read_lines(int fd){
     return res;
 }
 
-//basically read but for string instead of char* in the second parameter.
+//basically read but for string* instead of char** in the second parameter.
 int readString(int fd, string* res, int n){
-    char *buf = (char*)malloc(n+1); //allocating what's necessary
-    buf[n] = '\0';
+    char buf[n];
     int count = (int)read(fd,buf,n); //reading into buf
-    for(int i=0;i<count;i++){
-        ajoutFinString(buf[i],res); //copying what's in buf to String
-    }
-    free(buf); //freeing buf, there's no need for it
+    for(int i=0;i<count;i++) 
+        ajoutFinString(buf[i],res);
     return count;
 }
