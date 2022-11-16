@@ -6,16 +6,15 @@
 int	main()
 {
 	int	fd;
-	char *buf;
+	char *res;
 	fd = open("test.txt", O_RDONLY);
     int n; 
     printf("how many lines do you want to show? "); scanf("%d",&n);
     for(int i=0;i<n;i++){
-        buf = read_lines(fd);
-        if(buf == NULL) break;
-        printf("%s",buf);
-        free(buf);
+        res = read_lines(fd);
+        printf("%s",res);
+        free(res);
     }
-    free(buf);
+    free(res);
     return 0;
 }

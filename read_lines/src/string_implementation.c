@@ -24,7 +24,7 @@ void printString(string L)
         string temp=L;
         while(temp!=NULL)
         {
-            if(temp->element == '\n') printf("%c%c",'/','n');
+            if(temp->element == '\n') printf("(newline)");
             else printf("%c",temp->element);
             temp=temp->suivant;
         }

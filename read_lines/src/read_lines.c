@@ -8,8 +8,8 @@ char* read_lines(int fd){
     int check = readString(fd,&queue,BUFFER_SIZE); //reading into queue BUFFER_SIZE bites from fd
     if(queue == NULL) return NULL; //if we read and obtain nothing we quit.
     //general case : 
-    while(check == BUFFER_SIZE && indexInString('\n',queue) == -1){ //redoing open while encountering no newlines
-        readString(fd,&queue,BUFFER_SIZE);
+    while(check > 0 && indexInString('\n',queue) == -1){ //redoing open while encountering no newlines
+        check = readString(fd,&queue,BUFFER_SIZE);
     }
     int index_newline = indexInString('\n',queue); //getting the index of where \n was first encountered in queue
     if(index_newline == -1){ //particular case : we're in the last line.(if the document doesn't end in \n)
@@ -17,6 +17,7 @@ char* read_lines(int fd){
     } //we substracted one because index and size(longueur) are one-off each other.
     res = (char*) malloc(index_newline +2); //the 2 extra mallocs are for : one-off between index and size, and '\0'
     string temp = queue; //we use temp to not alter queue.
+    //printf("\nqueue = ");printString(queue); printf("\t index = %d\n",index_newline);
     for(int i=0;i<index_newline+1;i++){
         res[i] = temp->element; //copying everything before \n from queue into res
         temp = temp->suivant; //advancing the singly linked list by one
