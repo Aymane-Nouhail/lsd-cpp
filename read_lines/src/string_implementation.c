@@ -1,53 +1,43 @@
 #include "../include/read_lines.h"
 
-unsigned longueurString(string L)
+int longueurString(string L)
 {
-    unsigned l=0;
-    if(L != NULL)
-    {
-        string temp=L;
-        while(temp!=NULL)
-        {
+    int l=0;
+    if(L != NULL){
+        while(L!=NULL){
             l+=1;
-            temp=temp->suivant;
+            L=L->suivant;
         }
     }
     return l;
 }
 
-void printString(string L)
-{
+void printString(string L){
     if(L==NULL)
         printf("Empty String!");
-    else
-    {
-        string temp=L;
-        while(temp!=NULL)
-        {
-            if(temp->element == '\n') printf("(newline)");
-            else printf("%c",temp->element);
-            temp=temp->suivant;
+    else{
+        while(L!=NULL){
+            if(L->element == '\n') printf("(newline)");
+            else printf("%c",L->element);
+            L=L->suivant;
         }
     }
 }
-void ajoutDebutString(char x,string * L)
-{
-    letter * C=(letter *)malloc(sizeof(letter));
+void ajoutDebutString(char x,string* L){
+    letter* C=(letter *)malloc(sizeof(letter));
     C->element=x;
     C->suivant=*L;
     *L=C;
     return;
 }
 
-void ajoutFinString(char x,string * L)
-{
-    string C=(string)malloc(sizeof(letter));
+void ajoutFinString(char x,string * L){
+    letter* C=(letter*)malloc(sizeof(letter));
     C->element=x;
     C->suivant=NULL;
     if(*L==NULL)
         *L=C;
-    else
-    {
+    else{
         string temp=*L;
         while(temp->suivant!=NULL)
             temp=temp->suivant;
@@ -56,36 +46,29 @@ void ajoutFinString(char x,string * L)
     return;
 }
 
-void suppressionDebutString(string* L)
-{
-    if(L!=NULL)
-    {
+void suppressionDebutString(string* L){
+    if(L!=NULL){
         string temp=*L;
         *L=(*L)->suivant;
         free(temp);
     }
     return;
 }
-void freeString(string *L)
-{
-    while((*L)!=NULL)
-    {
+void freeString(string *L){
+    while((*L)!=NULL){
         string temp=*L;
         *L=(*L)->suivant;
         free(temp);
     }
 }
 
-int indexInString(char x, string L)
-{
-    string temp=L;
+int indexInString(char x, string L){
     int count=0;
-    if (temp == NULL) {return (-1);}
-    while(temp!=NULL)
-    {
-        if(temp->element==x)
+    if (L == NULL) return (-1);
+    while(L!=NULL){
+        if(L->element==x)
             return count;
-        temp=temp->suivant;
+        L=L->suivant;
         count++;
     }
     return (-1);

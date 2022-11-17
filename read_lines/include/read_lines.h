@@ -11,16 +11,16 @@
 struct letter
 {
     char element;
-    struct letter * suivant;
+    struct letter* suivant;
 
 };
 typedef struct letter letter;
-typedef struct letter * string;
+typedef struct letter* string;
 
 /************** PROTOTYPES **************/
 
 //string_implementation.c
-unsigned longueurString(string); //length of a string
+int longueurString(string); //length of a string
 void printString(string); //afficher un string
 void ajoutFinString(char, string*); //add a char at the end of a string
 void ajoutDebutString(char, string*); //add a char at the start of a string
