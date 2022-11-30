@@ -121,17 +121,6 @@ int main(){
         cout << "Enter another number : ";
         cin >> user_choice;
     }
-    /*
-    char firstname1[] = "Aymane";
-    char lastname1[] = "Nouhail";
-    char phonenumber1[] = "0777741021";
-    phonebook.AddContact(firstname1,lastname1,phonenumber1,1);
-    char firstname2[] = "Patrick";
-    char lastname2[] = "Bateman";
-    char phonenumber2[] = "0726891829";
-    phonebook.AddContact(firstname2,lastname2,phonenumber2,2);
-    phonebook.printContacts();
-    */
     cout << "=====PROGRAM EXITED SUCCESSFULLY=====";
     return 0;
 }
