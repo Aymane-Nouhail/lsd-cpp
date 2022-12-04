@@ -5,18 +5,10 @@ using namespace std;
 void PhoneBook::AddContact(char* name1,char * name2,char* phonenumber,int identifier){
     //copying name1 into contacts[count_conacts].firstname
     int n = strlen(name1);
-    memcpy(contacts[count_contacts%8].firstname,name1,n);
-    contacts[count_contacts%8].firstname[n] = '\0';
-    //copying name2 into contacts[count_conacts].lastname
-    n = strlen(name2);
-    memcpy(contacts[count_contacts].lastname,name2,n);
-    contacts[count_contacts%8].lastname[n] = '\0';
-    //likewise with phonenumber
-    n = strlen(phonenumber);
-    memcpy(contacts[count_contacts].phonenumber,phonenumber,n);
-    contacts[count_contacts%8].phonenumber[n] = '\0';
-    //finally with id
-    contacts[count_contacts%8].id = identifier;
+    contacts[count_contacts%8].set_firstname(name1);
+    contacts[count_contacts%8].set_lastame(name2);
+    contacts[count_contacts%8].set_phonenumber(phonenumber);
+    contacts[count_contacts%8].set_id(identifier);
     count_contacts++;
     return;
 }
@@ -49,12 +41,15 @@ void PhoneBook::truncate(int n){
 }
 
 void PhoneBook::printContacts(){
-    cout << "---------------------------------------------------"<<endl;
-    cout << "first name|last name |phone nmbr|    id    " << endl;
-    cout << "---------------------------------------------------"<<endl;
+    cout << CONST_DASHES<<endl;
+    cout << "first name|last name |phone nmbr|identifier" << endl;
+    cout << CONST_DASHES<<endl;
     for(int i=0;i<count_contacts && i<8;i++){
-        truncate(contacts[i].firstname); cout<< "|" ;truncate(contacts[i].lastname); cout << "|";truncate(contacts[i].phonenumber); cout<< "|"; truncate(contacts[i].id);
-    cout <<endl<<"---------------------------------------------------"<<endl;
+        truncate(contacts[i].get_firstname()); cout<< "|" ;
+        truncate(contacts[i].get_lastname()); cout << "|";
+        truncate(contacts[i].get_phonenumber()); cout<< "|";
+        truncate(contacts[i].get_id());
+        cout <<endl<<CONST_DASHES<<endl;
     }
     return;
 }
@@ -62,7 +57,7 @@ void PhoneBook::printContacts(){
 void PhoneBook::searchContacts(int id){
     int res = -1;
     for(int i=0;i<count_contacts && i<8;i++){
-        if(contacts[i].id == id){
+        if(contacts[i].get_id() == id){
             res = i;
             break;
         }
@@ -71,14 +66,14 @@ void PhoneBook::searchContacts(int id){
         cout <<"THERE IS NO USER WITH THAT ID"<<endl;
         return;
     }
-    cout << "---------------------------------------------------"<<endl;
-    cout << "first name|last name |phone nmbr|    id    " << endl;
-    cout << "---------------------------------------------------"<<endl;
-    truncate(contacts[res].firstname); cout<< "|" ;
-    truncate(contacts[res].lastname); cout << "|";
-    truncate(contacts[res].phonenumber); cout<< "|"; 
-    cout <<contacts[res].id;
-    cout <<endl<<"---------------------------------------------------"<<endl;
+    cout << CONST_DASHES<<endl;
+    cout << "first name|last name |phone nmbr|identifier" << endl;
+    cout << CONST_DASHES<<endl;
+    truncate(contacts[res].get_firstname()); cout<< "|" ;
+    truncate(contacts[res].get_lastname()); cout << "|";
+    truncate(contacts[res].get_phonenumber()); cout<< "|"; 
+    cout <<contacts[res].get_id();
+    cout <<endl<<CONST_DASHES<<endl;
     return;
 }
 
