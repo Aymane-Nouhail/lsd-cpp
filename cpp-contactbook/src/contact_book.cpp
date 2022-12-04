@@ -3,8 +3,6 @@
 using namespace std;
 
 void PhoneBook::AddContact(char* name1,char * name2,char* phonenumber,int identifier){
-    //copying name1 into contacts[count_conacts].firstname
-    int n = strlen(name1);
     contacts[count_contacts%8].set_firstname(name1);
     contacts[count_contacts%8].set_lastame(name2);
     contacts[count_contacts%8].set_phonenumber(phonenumber);
