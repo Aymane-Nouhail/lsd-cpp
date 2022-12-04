@@ -74,7 +74,10 @@ void PhoneBook::searchContacts(int id){
     cout << "---------------------------------------------------"<<endl;
     cout << "first name|last name |phone nmbr|    id    " << endl;
     cout << "---------------------------------------------------"<<endl;
-    truncate(contacts[res].firstname); cout<< "|" ;truncate(contacts[res].lastname); cout << "|";truncate(contacts[res].phonenumber); cout<< "|"; cout <<contacts[res].id;
+    truncate(contacts[res].firstname); cout<< "|" ;
+    truncate(contacts[res].lastname); cout << "|";
+    truncate(contacts[res].phonenumber); cout<< "|"; 
+    cout <<contacts[res].id;
     cout <<endl<<"---------------------------------------------------"<<endl;
     return;
 }

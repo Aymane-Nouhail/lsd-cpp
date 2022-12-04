@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//to compile, cd into contact_book then run : g++ -o contact_book.exe ./src/*
 int main(){
     PhoneBook phonebook;
     char dashes[] = "-----------------------";
