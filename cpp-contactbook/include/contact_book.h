@@ -10,33 +10,21 @@
 
 class contact{
     public:
-        void set_firstname(char* name){
-            int n = strlen(name);
-            memcpy(firstname,name,n);
-            firstname[n] = '\0';
-            return;
-        }
-        char* get_firstname(){return firstname;}
-        void set_lastame(char* name){
-            int n = strlen(name);
-            memcpy(lastname,name,n);
-            lastname[n] = '\0';
-            return;
-        }
-        char* get_lastname(){return lastname;}
-        void set_phonenumber(char* name){
-            int n = strlen(name);
-            memcpy(phonenumber,name,n);
-            phonenumber[n] = '\0';
-            return;
-        }
-        char* get_phonenumber(){return phonenumber;}
-        void set_id(int n){
-            id = n;
-            return;
-        }
-        int get_id(){return id;}
+        void set_firstname(char* name) {set_char(name,firstname);}
+        char* get_firstname() {return firstname;}
+        void set_lastame(char* name) {set_char(name,lastname);}
+        char* get_lastname() {return lastname;}
+        void set_phonenumber(char* name) {set_char(name,phonenumber);}
+        char* get_phonenumber() {return phonenumber;}
+        void set_id(int n) {id = n; return;}
+        int get_id() {return id;}
     private:
+        void set_char(char* src, char* dest){
+            int n = strlen(src);
+            memcpy(dest,src,n);
+            dest[n] = '\0';
+            return;
+        }
         char firstname[MAX_SIZE];
         char lastname[MAX_SIZE];
         char phonenumber[MAX_SIZE];
