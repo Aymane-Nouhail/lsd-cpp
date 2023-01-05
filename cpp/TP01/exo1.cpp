@@ -1,3 +1,4 @@
+//this is a direct re-implementation in C++ of my pure C code of the same problem : https://github.com/Aymane-Nouhail/c-programming/blob/main/info_project/part_2/part02.c
 #include <iostream>
 #include <list>
 #include <queue>
