@@ -1,52 +1,38 @@
-//this is a direct re-implementation in C++ of my pure C code of the same problem : https://github.com/Aymane-Nouhail/c-programming/blob/main/info_project/part_2/part02.c
+//shortest path, bfs
 #include <iostream>
 #include <list>
 #include <queue>
 #include <vector>
 
-
 using namespace std;
 
-struct graph
+class graph
 {
-    vector<vector<int>> adjacency_matrix;
-    int num_nodes;
+    public:
+        graph(int n) : num_nodes(n) {
+            adjacency_matrix.resize(n);
+            for(int i=0;i<n;i++) adjacency_matrix[i].resize(n);
+        }
+        vector<vector<int>> adjacency_matrix;
+        int num_nodes;
 };
 
-// This function returns a list of all nodes that are directly connected to the input node
-list<int> node_neighbors(int node, graph M)
-{
-    list<int> neighbors;
-    for (int i = 0; i < M.num_nodes; i++)
-    {
-        if (M.adjacency_matrix[node][i] == 1)
-        {
-            neighbors.push_back(i);
-        }
-    }
-    return neighbors;
-}
-
-vector<int> solve(graph G, int s)
-{
-    queue<int> Q;
-    Q.push(s);
-    vector<bool> visited(G.num_nodes, false);
-    visited[s] = true;
+vector<int> bfs(graph G, int s){
+    queue<int> Q; Q.push(s);
+    vector<bool> visited(G.num_nodes, false); visited[s] = true;
     vector<int> prev(G.num_nodes, -1);
     int node;
     while (!Q.empty())
     {
         node = Q.front();
         Q.pop();
-        list<int> neighbors = node_neighbors(node, G);
-        for (auto next : neighbors)
+        for (int i = 0; i < G.num_nodes; i++)
         {
-            if (visited[next] == false)
+            if (G.adjacency_matrix[node][i] == 1 && !visited[i])
             {
-                Q.push(next);
-                visited[next] = true;
-                prev[next] = node;
+                Q.push(i);
+                visited[i] = true;
+                prev[i] = node;
             }
         }
     }
@@ -68,36 +54,21 @@ list<int> reconstructPath(int s, int e, vector<int> prev)
 
 list<int> shortestPath(graph G, int s, int e)
 {
-    vector<int> prev = solve(G, s);
+    vector<int> prev = bfs(G, s);
     list<int> res = reconstructPath(s, e, prev);
     cout << "The shortest path is " << res.front() << " steps long." << endl;
     res.pop_front();
     return res;
 }
 
-int main()
-{
-    int num_nodes;
-    cout << "Enter the number of nodes in the graph: ";
-    cin >> num_nodes;
-
-    graph G;
-    G.num_nodes = num_nodes;
-    G.adjacency_matrix.resize(num_nodes);
-    for (int i = 0; i < num_nodes; i++)
-    {
-        G.adjacency_matrix[i].resize(num_nodes);
-    }
-
-    cout << "Enter the adjacency matrix of the graph: " << endl;
-    for (int i = 0; i < num_nodes; i++)
-    {
-        for (int j = 0; j < num_nodes; j++)
-        {
-            cin >> G.adjacency_matrix[i][j];
-        }
-    }
-
+ int main(){
+    graph G(6);
+    G.adjacency_matrix = {{0, 1, 1, 0, 0, 0},
+                          {1, 0, 1, 0, 0, 0},
+                          {1, 1, 0, 1, 0, 0},
+                          {0, 0, 0, 0, 1, 0},
+                          {0, 0, 0, 1, 0, 0},
+                          {0, 0, 0, 0, 0, 0}};
     int source, destination;
     cout << "Enter the source node: ";
     cin >> source;
@@ -115,3 +86,5 @@ int main()
 
     return 0;
 }
+
+

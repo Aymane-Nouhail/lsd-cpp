@@ -1,49 +1,47 @@
+//number of groups, dfs
 #include <iostream>
 #include <vector>
 
 using namespace std;
-
-// Number of vertices
-int n;
-
-// Adjacency list representation of the graph
-vector<int> adj[100];
+class graph
+{
+    public:
+        graph(int n) : num_nodes(n) {
+            adjacency_matrix.resize(n);
+            for(int i=0;i<n;i++) adjacency_matrix[i].resize(n);
+        }
+        vector<vector<int>> adjacency_matrix;
+        int num_nodes;
+};
 
 // Visited array to keep track of visited nodes
-bool vis[100];
+vector<bool> vis(100,false);
 
 // Depth-first search function
-void dfs(int u){
-    // Mark node as visited
+void dfs(graph G, int u){
     vis[u] = true;
-
-    // Visit all unvisited neighbors
-    // Iterate through the adjacency list of node u
-    for (unsigned int i = 0; i < adj[u].size(); i++){
-        // Get the current neighbor
-        int v = adj[u][i];
-        // If the neighbor has not been visited, perform a dfs on it
+    for (unsigned int i = 0; i < G.num_nodes; i++){
+        int v = G.adjacency_matrix[u][i];
         if (!vis[v]) {
-            dfs(v);
+            dfs(G,v);
         }
     }
 }
 
+
 int main() {
+    int n;
     // Read number of vertices
     cout<<"How many nodes : ";
     cin >> n;
-
+    graph G(n);
     // Read adjacency matrix and build adjacency list
     cout<<"Enter the matrix : "<<endl;
     for (int i = 0; i < n; i++){
         for (int j = 0; j < n; j++){
             int x;
             cin >> x;
-            if (x) {
-                // Add edge between i and j
-                adj[i].push_back(j);
-            }
+            G.adjacency_matrix[i][j] = 1;
         }
     }
     // Count number of connected components
@@ -53,7 +51,7 @@ int main() {
         // If the node has not been visited, it is part of a new connected component
         if (!vis[i]) {
             // Start a new connected component by performing a dfs on this node
-            dfs(i);
+            dfs(G,i);
             // Increment the count of connected components
             count++;
         }

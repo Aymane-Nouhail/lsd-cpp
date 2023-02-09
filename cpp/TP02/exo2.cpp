@@ -1,3 +1,4 @@
+//powrec, powiter
 #include<iostream>
 
 template <typename T>

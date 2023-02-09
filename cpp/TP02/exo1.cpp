@@ -1,5 +1,5 @@
 #include <iostream>
-
+using namespace std;
 template <typename T>
 T multiply(T x, int y) {
     return x * y;

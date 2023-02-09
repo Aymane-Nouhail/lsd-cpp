@@ -19,11 +19,12 @@ class List{
     public:
         List() : head(nullptr) {}
         void push_back(T x){
-            Node<T>* new_node = new Node<T>(x,nullptr);  // Use initializer list to create new_node
-            if(head == nullptr) head = new_node;
-            else{
+            Node<T>* new_node = new Node<T>(x, nullptr);
+            if (head == nullptr) {
+                head = new_node;
+            } else {
                 Node<T>* current = head;
-                while(current->next != nullptr){
+                while (current->next != nullptr) {
                     current = current->next;
                 }
                 current->next = new_node;
